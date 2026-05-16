@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion-3d';
-import { Text, useThree } from '@react-three/drei';
+import { Text } from '@react-three/drei';
+import { useThree } from '@react-three/fiber';
 import { shoesData } from '../data/shoesData'; 
 
 const MotionText = motion(Text);
