@@ -41,27 +41,27 @@ export default function PersistentUI({ cartCount = 0, onCartClick, activeCategor
         </div>
 
         {/* Right: Icons & Search */}
-        <div className="flex items-center space-x-4 md:space-x-6">
+        <div className="flex items-center space-x-5 md:space-x-6">
           <SearchOverlay onSelectShoe={onSelectShoe} />
           
           <button 
             onClick={onProfileClick}
-            className="relative text-[var(--color-nike-black)] hover:text-[var(--color-nike-white)] transition-colors"
+            className="relative text-[var(--color-nike-black)] hover:text-[var(--color-nike-white)] transition-colors p-1"
           >
             {user ? (
-              <div className="w-6 h-6 md:w-7 md:h-7 rounded-full bg-gradient-to-br from-[var(--color-nike-red)] to-orange-600 flex items-center justify-center text-white text-[8px] md:text-[10px] font-bold ring-2 ring-white/30">
+              <div className="w-7 h-7 md:w-7 md:h-7 rounded-full bg-gradient-to-br from-[var(--color-nike-red)] to-orange-600 flex items-center justify-center text-white text-[9px] md:text-[10px] font-bold ring-2 ring-white/30">
                 {user.avatar}
               </div>
             ) : (
-              <User className="w-5 h-5 md:w-6 md:h-6" />
+              <User className="w-6 h-6 md:w-6 md:h-6" />
             )}
           </button>
           
           <button 
-            className="relative text-[var(--color-nike-black)] hover:text-[var(--color-nike-white)] transition-colors"
+            className="relative text-[var(--color-nike-black)] hover:text-[var(--color-nike-white)] transition-colors p-1"
             onClick={onCartClick}
           >
-            <ShoppingBag className="w-5 h-5 md:w-6 md:h-6" />
+            <ShoppingBag className="w-6 h-6 md:w-6 md:h-6" />
             {cartCount > 0 && (
               <span className="absolute -top-1 -right-1 bg-[var(--color-nike-red)] text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
                 {cartCount}
@@ -71,10 +71,10 @@ export default function PersistentUI({ cartCount = 0, onCartClick, activeCategor
 
           {/* Mobile Hamburger */}
           <button 
-            className="md:hidden text-[var(--color-nike-black)] hover:text-[var(--color-nike-white)] transition-colors"
+            className="md:hidden text-[var(--color-nike-black)] hover:text-[var(--color-nike-white)] transition-colors p-1"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
           </button>
         </div>
       </nav>

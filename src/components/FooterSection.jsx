@@ -70,10 +70,10 @@ export default function FooterSection({ activeShoe }) {
 
       {/* 2. CORE HEADLINES */}
       <div className="relative flex flex-col items-center justify-center my-auto selection:bg-orange-500 z-10 pointer-events-none px-4 py-8 md:py-0">
-        <h1 className="text-[18vw] md:text-[12vw] font-anton uppercase text-transparent stroke-text leading-none select-none opacity-40 absolute md:absolute top-0 md:top-auto tracking-tighter whitespace-nowrap -translate-y-12 md:translate-y-0">
+        <h1 className="text-[16vw] md:text-[12vw] font-anton uppercase text-transparent stroke-text leading-none select-none opacity-40 md:absolute top-0 md:top-auto tracking-tighter whitespace-nowrap mb-2 md:mb-0 md:-translate-y-12">
           JUST DO IT.
         </h1>
-        <h1 className="text-[12vw] md:text-[10vw] font-anton uppercase text-white leading-none relative z-10 tracking-tight drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)] whitespace-nowrap mt-4 md:mt-0">
+        <h1 className="text-[12vw] md:text-[10vw] font-anton uppercase text-white leading-none relative z-10 tracking-tight drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)] whitespace-nowrap md:mt-0">
           BREAK LIMITS<span style={{ color: brandColor }}>.</span>
         </h1>
       </div>

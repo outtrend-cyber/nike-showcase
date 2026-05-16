@@ -10,7 +10,7 @@ export default function SceneView({ activeShoeIndex, activeCategory = 'men' }) {
   
   // Scale ghost text based on viewport width — much smaller on mobile
   const isMobile = viewport.width < 6;
-  const baseScale = isMobile ? (viewport.width / 15) : Math.min(viewport.width / 10, 1);
+  const baseScale = isMobile ? (viewport.width / 20) : Math.min(viewport.width / 10, 1);
   
   return (
     <>

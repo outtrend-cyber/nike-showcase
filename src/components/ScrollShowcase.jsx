@@ -25,10 +25,10 @@ export default function ScrollShowcase({ activeCategoryData, activeShoe, activeS
   const shoeXMobile = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], ["0%", "0%", "0%", "0%", "0%"]);
   
   const shoeYDesktop = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], ["0%", "0%", "10%", "10%", "-5%"]);
-  const shoeYMobile = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], ["0%", "0%", "-25%", "-25%", "-25%"]);
+  const shoeYMobile = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], ["0%", "0%", "-35%", "-35%", "-35%"]);
   
   const shoeScaleDesktop = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [1, 1, 1.1, 1.1, 1.1]);
-  const shoeScaleMobile = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [1, 1, 0.85, 0.85, 0.85]);
+  const shoeScaleMobile = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [1, 1, 0.75, 0.75, 0.75]);
   
   const shoeRotate = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [0, 0, -10, -10, 15]);
 
@@ -77,19 +77,19 @@ export default function ScrollShowcase({ activeCategoryData, activeShoe, activeS
 
         {/* Phase 1: Left Metrics */}
         <div className="w-full h-screen flex items-end md:items-center justify-center md:justify-start pb-24 md:pb-0 px-6 md:px-12 lg:px-24 pointer-events-none">
-          <div className="max-w-xs md:max-w-sm flex flex-col gap-2 md:gap-4 font-sans text-center md:text-left items-center md:items-start drop-shadow-md" style={{ color: activeShoe.TextColor }}>
-            <span className="font-bold uppercase tracking-wider opacity-80 text-xs md:text-sm" style={{ color: activeShoe.TextColor }}>{activeShoe.leftTitle}</span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-anton uppercase leading-none">{activeShoe.leftHeader}</h2>
-            <p className="text-xs md:text-sm leading-relaxed opacity-90 font-medium">{activeShoe.leftDesc}</p>
+          <div className="max-w-xs md:max-w-sm flex flex-col gap-2 md:gap-4 font-sans text-center md:text-left items-center md:items-start drop-shadow-md bg-black/10 md:bg-transparent p-4 md:p-0 rounded-3xl backdrop-blur-[2px] md:backdrop-blur-none" style={{ color: activeShoe.TextColor }}>
+            <span className="font-bold uppercase tracking-wider opacity-80 text-[10px] md:text-sm" style={{ color: activeShoe.TextColor }}>{activeShoe.leftTitle}</span>
+            <h2 className="text-2xl md:text-5xl lg:text-6xl font-anton uppercase leading-none">{activeShoe.leftHeader}</h2>
+            <p className="text-[10px] md:text-sm leading-relaxed opacity-90 font-medium">{activeShoe.leftDesc}</p>
           </div>
         </div>
 
         {/* Phase 2: Right Metrics */}
         <div className="w-full h-screen flex items-end md:items-center justify-center md:justify-end pb-24 md:pb-0 px-6 md:px-12 lg:px-24 pointer-events-none">
-          <div className="max-w-xs md:max-w-sm flex flex-col gap-2 md:gap-4 font-sans text-center md:text-right items-center md:items-end drop-shadow-md" style={{ color: activeShoe.TextColor }}>
-            <span className="font-bold uppercase tracking-wider opacity-80 text-xs md:text-sm" style={{ color: activeShoe.TextColor }}>{activeShoe.rightTitle}</span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-anton uppercase leading-none">{activeShoe.rightHeader}</h2>
-            <p className="text-xs md:text-sm leading-relaxed opacity-90 font-medium">{activeShoe.rightDesc}</p>
+          <div className="max-w-xs md:max-w-sm flex flex-col gap-2 md:gap-4 font-sans text-center md:text-right items-center md:items-end drop-shadow-md bg-black/10 md:bg-transparent p-4 md:p-0 rounded-3xl backdrop-blur-[2px] md:backdrop-blur-none" style={{ color: activeShoe.TextColor }}>
+            <span className="font-bold uppercase tracking-wider opacity-80 text-[10px] md:text-sm" style={{ color: activeShoe.TextColor }}>{activeShoe.rightTitle}</span>
+            <h2 className="text-2xl md:text-5xl lg:text-6xl font-anton uppercase leading-none">{activeShoe.rightHeader}</h2>
+            <p className="text-[10px] md:text-sm leading-relaxed opacity-90 font-medium">{activeShoe.rightDesc}</p>
           </div>
         </div>
 
