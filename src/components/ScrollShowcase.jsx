@@ -37,6 +37,7 @@ export default function ScrollShowcase({ activeCategoryData, activeShoe, activeS
   const shoeScale = isMobile ? shoeScaleMobile : shoeScaleDesktop;
 
   // INTERACTIVE TEXT OPACITY: Metrics fade in/out based on scroll position
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
   const phase1Opacity = useTransform(scrollYProgress, [0.15, 0.35, 0.5, 0.7], [0, 1, 1, 0]);
   const phase2Opacity = useTransform(scrollYProgress, [0.65, 0.85, 1], [0, 1, 1]);
 
@@ -66,7 +67,24 @@ export default function ScrollShowcase({ activeCategoryData, activeShoe, activeS
       <div className="absolute top-0 left-0 w-full h-[300vh] z-30 pointer-events-none">
         
         {/* HERO SECTION (0 - 100vh) */}
-        <div className="w-full h-screen relative">
+        <div className="w-full h-screen relative flex flex-col items-center justify-start pt-28 md:pt-36">
+          {/* Main Title Overlay */}
+          <motion.div 
+            style={{ opacity: heroOpacity }}
+            className="text-center px-6"
+          >
+            <h1 className="text-5xl md:text-8xl font-anton uppercase text-white leading-none tracking-tighter drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+              {activeShoe.Name}
+            </h1>
+            <div className="flex items-center justify-center gap-4 mt-3">
+              <div className="h-px w-8 md:w-12 bg-white/30" />
+              <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] text-white font-black opacity-60">
+                Premium Edition
+              </span>
+              <div className="h-px w-8 md:w-12 bg-white/30" />
+            </div>
+          </motion.div>
+
           <div className="absolute bottom-32 md:bottom-40 w-full flex justify-center pointer-events-auto px-4">
              <AddToCartButton onAdd={onAddToCart} activeShoe={activeShoe} />
           </div>
