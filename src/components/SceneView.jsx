@@ -1,12 +1,15 @@
 import { motion } from 'framer-motion-3d';
-import { Text } from '@react-three/drei';
-// Ensure this path matches your data file location
+import { Text, useThree } from '@react-three/drei';
 import { shoesData } from '../data/shoesData'; 
 
 const MotionText = motion(Text);
 
 export default function SceneView({ activeShoeIndex, activeCategory = 'men' }) {
   const currentCategoryData = shoesData[activeCategory];
+  const { viewport } = useThree();
+  
+  // Scale ghost text based on viewport width — much smaller on mobile
+  const baseScale = Math.min(viewport.width / 10, 1);
   
   return (
     <>
@@ -21,25 +24,25 @@ export default function SceneView({ activeShoeIndex, activeCategory = 'men' }) {
         />
       </motion.mesh>
 
-      {/* 2. The Sliding Ghost Text */}
+      {/* 2. The Sliding Ghost Text — scales with viewport */}
       {currentCategoryData.map((shoe, index) => {
         const isActive = index === activeShoeIndex;
+        const scaledFontSize = (30 / shoe.GhostText.length) * baseScale;
         return (
           <MotionText
-            key={`text-${index}`}
+            key={`text-${activeCategory}-${index}`}
             text={shoe.GhostText}
-            font="https://raw.githubusercontent.com/google/fonts/main/ofl/anton/Anton-Regular.ttf" // Reliable TTF source
-            // Dynamic sizing: Ensures long words like "AIR FORCE 1" shrink to fit, and short words like "BLAZER" scale up to maintain impact.
-            fontSize={30 / shoe.GhostText.length} 
+            font="https://raw.githubusercontent.com/google/fonts/main/ofl/anton/Anton-Regular.ttf"
+            fontSize={scaledFontSize} 
             letterSpacing={0.02}
             anchorX="center"
             anchorY="middle"
             position={[0, 0, -5]}
             transparent={true}
-            color={shoe.TextColor} // Stark Neutral Contrast
+            color={shoe.TextColor}
             animate={{
-              fillOpacity: isActive ? 0.2 : 0, // Bumped to 20% for a slightly stronger, premium contrast
-              x: isActive ? 0 : (index < activeShoeIndex ? -5 : 5), // Wider slide
+              fillOpacity: isActive ? 0.15 : 0,
+              x: isActive ? 0 : (index < activeShoeIndex ? -5 : 5),
               scale: isActive ? 1 : 0.8
             }}
             transition={{ 
@@ -53,7 +56,7 @@ export default function SceneView({ activeShoeIndex, activeCategory = 'men' }) {
         );
       })}
       
-      {/* STRICT ENFORCEMENT: NO SHOE IMAGES ARE RENDERED IN THIS CANVAS */}
     </>
   );
 }
+
