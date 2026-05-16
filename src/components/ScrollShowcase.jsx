@@ -21,29 +21,20 @@ export default function ScrollShowcase({ activeCategoryData, activeShoe, activeS
   }, []);
 
   // Smooth screen transitions across 300vh (Hero -> Phase 1 -> Phase 2)
-  const shoeX = useTransform(
-    scrollYProgress, 
-    [0, 0.25, 0.5, 0.75, 1], 
-    isMobile ? ["0%", "0%", "0%", "0%", "0%"] : ["0%", "0%", "25%", "25%", "-25%"]
-  );
+  const shoeXDesktop = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], ["0%", "0%", "25%", "25%", "-25%"]);
+  const shoeXMobile = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], ["0%", "0%", "0%", "0%", "0%"]);
   
-  const shoeY = useTransform(
-    scrollYProgress, 
-    [0, 0.25, 0.5, 0.75, 1], 
-    isMobile ? ["0%", "0%", "-25%", "-25%", "-25%"] : ["0%", "0%", "10%", "10%", "-5%"]
-  );
+  const shoeYDesktop = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], ["0%", "0%", "10%", "10%", "-5%"]);
+  const shoeYMobile = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], ["0%", "0%", "-25%", "-25%", "-25%"]);
   
-  const shoeScale = useTransform(
-    scrollYProgress, 
-    [0, 0.25, 0.5, 0.75, 1], 
-    isMobile ? [1, 1, 0.85, 0.85, 0.85] : [1, 1, 1.1, 1.1, 1.1]
-  );
+  const shoeScaleDesktop = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [1, 1, 1.1, 1.1, 1.1]);
+  const shoeScaleMobile = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [1, 1, 0.85, 0.85, 0.85]);
   
-  const shoeRotate = useTransform(
-    scrollYProgress, 
-    [0, 0.25, 0.5, 0.75, 1], 
-    [0, 0, -10, -10, 15]
-  );
+  const shoeRotate = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [0, 0, -10, -10, 15]);
+
+  const shoeX = isMobile ? shoeXMobile : shoeXDesktop;
+  const shoeY = isMobile ? shoeYMobile : shoeYDesktop;
+  const shoeScale = isMobile ? shoeScaleMobile : shoeScaleDesktop;
 
   return (
     <div ref={containerRef} className="relative h-[300vh] w-full bg-transparent">
