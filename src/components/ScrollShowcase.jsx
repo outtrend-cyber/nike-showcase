@@ -36,6 +36,10 @@ export default function ScrollShowcase({ activeCategoryData, activeShoe, activeS
   const shoeY = isMobile ? shoeYMobile : shoeYDesktop;
   const shoeScale = isMobile ? shoeScaleMobile : shoeScaleDesktop;
 
+  // INTERACTIVE TEXT OPACITY: Metrics fade in/out based on scroll position
+  const phase1Opacity = useTransform(scrollYProgress, [0.15, 0.35, 0.5, 0.7], [0, 1, 1, 0]);
+  const phase2Opacity = useTransform(scrollYProgress, [0.65, 0.85, 1], [0, 1, 1]);
+
   return (
     <div ref={containerRef} className="relative h-[300vh] w-full bg-transparent">
       
@@ -76,22 +80,31 @@ export default function ScrollShowcase({ activeCategoryData, activeShoe, activeS
         </div>
 
         {/* Phase 1: Left Metrics */}
-        <div className="w-full h-screen flex items-end md:items-center justify-center md:justify-start pb-24 md:pb-0 px-6 md:px-12 lg:px-24 pointer-events-none">
-          <div className="max-w-xs md:max-w-sm flex flex-col gap-2 md:gap-4 font-sans text-center md:text-left items-center md:items-start drop-shadow-md bg-black/10 md:bg-transparent p-4 md:p-0 rounded-3xl backdrop-blur-[2px] md:backdrop-blur-none" style={{ color: activeShoe.TextColor }}>
-            <span className="font-bold uppercase tracking-wider opacity-80 text-[10px] md:text-sm" style={{ color: activeShoe.TextColor }}>{activeShoe.leftTitle}</span>
-            <h2 className="text-2xl md:text-5xl lg:text-6xl font-anton uppercase leading-none">{activeShoe.leftHeader}</h2>
-            <p className="text-[10px] md:text-sm leading-relaxed opacity-90 font-medium">{activeShoe.leftDesc}</p>
-          </div>
+        <div className="w-full h-screen flex items-end md:items-center justify-center md:justify-start pb-28 md:pb-0 px-6 md:px-12 lg:px-24 pointer-events-none">
+          <motion.div 
+            style={{ opacity: phase1Opacity }}
+            className="max-w-xs md:max-w-sm flex flex-col gap-2 md:gap-4 font-sans text-center md:text-left items-center md:items-start drop-shadow-md bg-black/20 md:bg-transparent p-6 md:p-0 rounded-[2.5rem] backdrop-blur-[3px] md:backdrop-blur-none border border-white/5 md:border-none pointer-events-auto" 
+            style={{ color: activeShoe.TextColor, opacity: phase1Opacity }}
+          >
+            <span className="font-bold uppercase tracking-[0.2em] opacity-80 text-[10px] md:text-xs" style={{ color: activeShoe.TextColor }}>{activeShoe.leftTitle}</span>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-anton uppercase leading-none tracking-tight">{activeShoe.leftHeader}</h2>
+            <p className="text-[11px] md:text-sm leading-relaxed opacity-90 font-medium max-w-[280px] md:max-w-none">{activeShoe.leftDesc}</p>
+          </motion.div>
         </div>
 
         {/* Phase 2: Right Metrics */}
-        <div className="w-full h-screen flex items-end md:items-center justify-center md:justify-end pb-24 md:pb-0 px-6 md:px-12 lg:px-24 pointer-events-none">
-          <div className="max-w-xs md:max-w-sm flex flex-col gap-2 md:gap-4 font-sans text-center md:text-right items-center md:items-end drop-shadow-md bg-black/10 md:bg-transparent p-4 md:p-0 rounded-3xl backdrop-blur-[2px] md:backdrop-blur-none" style={{ color: activeShoe.TextColor }}>
-            <span className="font-bold uppercase tracking-wider opacity-80 text-[10px] md:text-sm" style={{ color: activeShoe.TextColor }}>{activeShoe.rightTitle}</span>
-            <h2 className="text-2xl md:text-5xl lg:text-6xl font-anton uppercase leading-none">{activeShoe.rightHeader}</h2>
-            <p className="text-[10px] md:text-sm leading-relaxed opacity-90 font-medium">{activeShoe.rightDesc}</p>
-          </div>
+        <div className="w-full h-screen flex items-end md:items-center justify-center md:justify-end pb-28 md:pb-0 px-6 md:px-12 lg:px-24 pointer-events-none">
+          <motion.div 
+            style={{ opacity: phase2Opacity }}
+            className="max-w-xs md:max-w-sm flex flex-col gap-2 md:gap-4 font-sans text-center md:text-right items-center md:items-end drop-shadow-md bg-black/20 md:bg-transparent p-6 md:p-0 rounded-[2.5rem] backdrop-blur-[3px] md:backdrop-blur-none border border-white/5 md:border-none pointer-events-auto" 
+            style={{ color: activeShoe.TextColor, opacity: phase2Opacity }}
+          >
+            <span className="font-bold uppercase tracking-[0.2em] opacity-80 text-[10px] md:text-xs" style={{ color: activeShoe.TextColor }}>{activeShoe.rightTitle}</span>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-anton uppercase leading-none tracking-tight">{activeShoe.rightHeader}</h2>
+            <p className="text-[11px] md:text-sm leading-relaxed opacity-90 font-medium max-w-[280px] md:max-w-none">{activeShoe.rightDesc}</p>
+          </motion.div>
         </div>
+
 
       </div>
     </div>
