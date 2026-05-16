@@ -42,6 +42,7 @@ export default function ScrollShowcase({ activeCategoryData, activeShoe, activeS
       {/* CRITICAL STICKY LOCK */}
       <div className="sticky top-0 w-full h-screen flex items-center justify-center overflow-hidden z-20 pointer-events-none">
         <motion.div 
+          key={isMobile ? 'mobile' : 'desktop'}
           style={{ x: shoeX, y: shoeY, scale: shoeScale, rotate: shoeRotate }} 
           className="w-[85%] max-w-[650px] aspect-video flex justify-center items-center"
         >
