@@ -1,0 +1,65 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+@theme {
+  --color-nike-black: #111111;
+  --color-nike-white: #FFFFFF;
+  --color-nike-mercury: #E5E5E5;
+  --color-nike-red: #EA553B;
+  --font-body: "Inter", sans-serif;
+  --font-ghost: "Oswald", sans-serif;
+  --font-anton: "Anton", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-nike-black);
+  color: var(--color-nike-white);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* overflow: hidden removed to enable native scrolling for ScrollShowcase */
+}
+
+/* Base resets */
+* {
+  box-sizing: border-box;
+}
+
+/* Custom utility for the specific solid border */
+.border-nike-red {
+  border-color: var(--color-nike-red);
+}
+
+/* Typography Utilities */
+.stroke-text {
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 768px) {
+  .stroke-text {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.12);
+  }
+}
+
+/* Hide scrollbar utility */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Touch-friendly tap targets */
+@media (pointer: coarse) {
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
